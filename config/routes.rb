@@ -8,6 +8,13 @@ MemoriesAlbum::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
+  #match '/auth/:provider/callback' => 'users#user_facebook_access', via: [:get, :post]
+
+  match 'auth/:provider/callback', to: 'users#user_facebook_access', via: [:get]
+  match 'auth/failure', to: redirect('/'), via: [:get]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get]
+
   root 'photos#index'
 
   # Example of regular route:

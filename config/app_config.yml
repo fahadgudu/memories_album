@@ -1,0 +1,8 @@
+development:
+  domain: 'http://localhost:3001/'
+  app_id: '700659209948352'
+  app_secret: '14029246477b48bc4dcdcb8de0a9b1df'
+production:
+  domain: ''
+  app_id: '700659209948352'
+  app_secret: '14029246477b48bc4dcdcb8de0a9b1df'
