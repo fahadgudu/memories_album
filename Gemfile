@@ -28,6 +28,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+
 gem "fb_graph", "~> 2.7.8"
 gem 'omniauth-google-oauth2'
 

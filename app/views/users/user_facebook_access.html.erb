@@ -1,8 +1,6 @@
 <% @user_photos.each do |photo| %>
-      <% photo.each do |pt| %>
-          <%= image_tag pt[:link], :width=> 200, :height => 200 %>
-      <%end%>
- <% end %>
-
-
+   <% photo.each do |pt| %>
+        <%= image_tag pt[:link], :width=> 200, :height => 200 %>
+        <%end%>
+    <% end %>
 <br>

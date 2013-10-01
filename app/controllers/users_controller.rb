@@ -1,4 +1,3 @@
-require 'net/http'
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -66,18 +65,17 @@ class UsersController < ApplicationController
   def user_facebook_access
     omniauth = request.env['omniauth.auth']
     me = FbGraph::User.me(:access_token => omniauth["credentials"]["token"])
-    @user_photos = []
-    albums_arr = me.albums(:access_token => omniauth["credentials"]["token"],:fields => "link",:name =>'name')
-    albums_arr.each_with_index  do |album,index|
-       user_photos_url  = []
-      album.photos(:field=>"link",:name=>'name',:source=> 'source').each_with_index do |photo,count|
-        user_photos_url[count] = {:link => photo.source, :source => photo.link}
+        @user_photos = []
+        albums_arr = me.albums(:access_token => omniauth["credentials"]["token"],:fields => "link",:name =>'name')
+        albums_arr.each_with_index  do |album,index|
+           user_photos_url  = []
+          album.photos(:field=>"link",:name=>'name',:source=> 'source').each_with_index do |photo,count|
+            user_photos_url[count] = {:link => photo.source, :source => photo.link}
+          end
+          @user_photos[index]  = user_photos_url
+
       end
-        @user_photos[index]  = user_photos_url
-
-    end
     p @user_photos
-
   end
 
 
